@@ -1,0 +1,28 @@
+{% extends "basic.html" %}
+
+{% block content %}
+<h3>Image by {% with obj.authors.all as authors %}{% include "authorlinks.html" %}{% endwith %}{% if obj.date %} in {{ obj.date }}{% endif %}</h3>
+		{% if obj.article_set.all %}
+            <h3>Referenced in article{% ifnotequal obj.article_set.count 1 %}s{% endifnotequal %}:</h3>
+            <ul class="info">
+                {% for article in obj.article_set.all %}
+                <li style="border:0">{% include "articlelink.html" %}</li>
+                {% endfor %}
+            </ul>
+		{% endif %}
+        {% if obj.caption %}
+        <p>
+            {{ obj.caption }}
+        </p>
+        {% endif %}
+        <br>
+		<a target="_blank" href="{{ obj.image.url }}"><img alt="Original: {{ obj.image.url }}" style="width: expression(this.width > 530 ? 530 : true ); max-width: 530px" src="{{ obj.article_size }}"></a>
+{% endblock %}
+
+{% block extra %}
+	{% if obj.tags.all %}
+	<p>
+	Tags: {% with obj.tags.all as tags %}{% include "taglinks.html" %}{% endwith %}
+	</p>
+	{% endif %}
+{% endblock %}

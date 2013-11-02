@@ -1,0 +1,38 @@
+{% extends "info.html" %}
+{% load markup %}
+
+{% block content %}
+    {{ block.super }}
+    {% for title, authors in titles %}
+        <h4>{{ title }}</h4>
+        {% for author, groups in authors %}
+        <ul style="padding-left: 1em">
+            <li style="border:0;padding:1px"><a data-slug="{{ author.slug }}" class="authorlink" href="#author={{ author.slug }}">
+            {{ author }}</a>
+			{% for n in groups %}<sup>{{ n }}</sup>{% endfor %}
+            <small>
+                {% if author.retired %}
+                    {% if author.year %}
+                        (class of {{ author.year }})
+                    {% else %}
+                        (past)
+                    {% endif %}
+                {% endif %}
+            </small>
+            </li>
+        </ul>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
+
+{% block extra %}
+<ul>
+    {% for group in groups %}
+    <li style="border: 0" id="note{{ forloop.counter }}">
+    [{{ forloop.counter }}] <a data-slug="{{ group.slug }}" class="authorlink" href="#author={{ group.slug }}">{{ group }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+

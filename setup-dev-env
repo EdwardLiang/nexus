@@ -1,0 +1,53 @@
+echo "Installing dependencies:"
+
+sudo apt-get install $(echo "
+git-core
+gitk
+imagemagick
+postgresql
+python-imaging
+python-markdown
+python-psycopg2
+python-pypdf
+python-simplejson
+")
+
+echo "Setting up database configuration for local development:"
+
+if test -d pg_files; then
+	sudo rsync -rlHK pg_files/main/ /etc/postgresql/8.4/main/
+	sudo chown postgres:postgres /etc/postgresql/8.4/main/*
+	sudo /etc/init.d/postgresql-8.4 restart
+else
+	echo "Postgresql conf missing!"
+	exit 1
+fi
+
+echo "Creating dev user:"
+
+set +e
+sudo -u postgres createuser --superuser nexus
+createdb -U nexus nexus
+CODE=$?
+set -e
+
+echo "It's ok to ignore the above errors."
+
+if [ $CODE -eq 0 ]; then
+	echo "Loading database dump:"
+	zcat pg_files/dump.sql.gz | psql nexus nexus
+else
+	echo "Not overwriting database. Run the following if you wish to:"
+	echo "  zcat pg_files/dump.sql.gz | psql nexus nexus"
+fi
+
+echo "Attempting to update codebase using public git url:"
+git pull git://github.com/ericl/nexus.git master
+
+python << EOF
+import django
+v = django.get_version()
+print("Django version required: 1.0.x")
+print("Using django version: " + v)
+print("Note: Versions 1.1+ *will* fail in unexpected ways. I don't recall exactly where, but probably in file upload validation.")
+EOF

@@ -1,0 +1,35 @@
+{% extends "basic.html" %}
+{% load markup %}
+
+{% block subtitle %}
+	{% block article_title %}{{ article.auto_title|safe }}{% endblock %}
+	<br>
+	<span class="subauthor">
+		{% block article_subtitle %}
+		{{ article.date|date:"F d, Y" }}&nbsp;&nbsp;|&nbsp;
+		{% with article.authors.all as authors %}
+		{% include "authorlinks.html" %}
+		{% endwith %}
+		{% endblock %}
+	</span>
+{% endblock %}
+{% block content %}
+    {{ article.text|markdown }}
+	<hr color="#ddd" size="1">
+	{% include "articlelike.html" %}
+{% endblock %}
+
+{% block extra %}
+	<div style="float: right;"><a href="javascript: window.scroll(0,0);">Top of Page</a></div>
+	<p>
+	Tags: {% with article.tags.all as tags %}{% include "taglinks.html" %}{% endwith %}
+	</p>
+	{% if article.printed %}
+		<p>
+			Article printed
+			<a class="embeddable" href="/archive/{{ article.printed.date }}">
+				{{ article.printed.date|date:"F d, Y" }}.
+			</a>
+		</p>
+    {% endif %}
+{% endblock %}

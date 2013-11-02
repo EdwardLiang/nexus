@@ -1,0 +1,15 @@
+*.DS_Store
+*.db
+*.pyc
+*.pyo
+*.swp
+*~
+.hidden
+.project
+.ropeproject
+/media/cache
+/media/image_orig
+/media/pdf_orig
+/media/upload
+\#*#
+nexus

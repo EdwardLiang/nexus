@@ -1,0 +1,11 @@
+{% extends "basic.html" %}
+{% load markup %}
+
+{% block subtitle %}
+{{ info.title }}
+<br style="font-size: 5pt">
+{% endblock %}
+
+{% block content %}
+	{{ info.text|markdown }}
+{% endblock %}

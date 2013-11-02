@@ -1,0 +1,7 @@
+{% if polls %}
+    {% for obj in polls %}
+        {% with obj.0 as poll %}{% with obj.1 as can_vote %}{% with obj.2 as readonly %}
+        {% include "poll_core.html" %}
+        {% endwith %}{% endwith %}{% endwith %}
+    {% endfor %}
+{% endif %}

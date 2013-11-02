@@ -1,0 +1,19 @@
+{% extends "basic.html" %}
+
+{% block content %}
+	{% if articles %}
+		<h2>Articles tagged '{{ tag.name }}'</h2>
+		<div class="alist">
+		{% for article in articles %}
+		{% include "articlelink.html" %}<br>
+		{% endfor %}
+		</div>
+	{% endif %}
+	{% if tag.image_set.all %}
+		<h2>Images tagged '{{ tag.name }}'</h2>
+		<br>
+		{% for image in tag.image_set.all %}
+			<div style="padding: 5px; float: left">{% include "imagelink.html" %}</div>
+		{% endfor %}
+	{% endif %}
+{% endblock %}

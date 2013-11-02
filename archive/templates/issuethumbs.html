@@ -1,0 +1,10 @@
+<div id="ist_wrapper" style="position: relative">
+<div id="issue_thumbs" style="height: 50px; overflow: hidden; border: 1px dotted #ddd; padding: 2px;">
+{% for doc in current_issue.pdf_set.all|slice:"7" %}
+<img class="issue_thumb_img" src="{{ doc.calculate_mini_url }}" style="float:left; width: 75px">
+{% endfor %}
+</div>
+<div id="issue_desc" style="position: absolute; bottom: 0px; right: 0px; background-color: black; color: white; padding: 1px; border-top-left-radius: 4px; opacity: 0.8; padding-right: 6px; padding-left: 6px; font-family: arial; font-size: 10pt; text-align: center; vertical-align: center">
+Latest Issue
+</div>
+</div>

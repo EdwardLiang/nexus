@@ -1,0 +1,30 @@
+{% extends "basic.html" %}
+
+{% block subtitle %}
+	{{ issue.date|date:"F d, Y" }}
+{% endblock %}
+
+{% block content %}
+	<br>
+	<a href="{{ issue.calculate_join_url }}">Download the complete issue.</a>
+	<br>
+	{% if issue.article_set.all %}
+	<div class="list-hider" style="padding: .2em 0 .5em .5em"><a href="#" class="list-hider">...or read online ({{ issue.article_set.count }})</a></div>
+	{% endif %}
+	<div class="alist" style="display:none">
+	{% for article in issue.article_set.all %}
+	{% include "articlelink.html" %}<br>
+	{% endfor %}
+	</div>
+	<hr color="#ddd" size="1">
+	{% include "archivelike.html" %}
+{% spaceless %}
+    {% for doc in issue.pdf_set.all %}
+		<div class="shadow"><div class="s1"><div class="s2"><div class="s3"><div class="s4">
+            <a href="{{ doc.pdf.url }}">
+				<img alt="{{ doc.pdf }}" src="{{ doc.calculate_thumbnail_url }}">
+            </a>
+		</div></div></div></div></div>
+    {% endfor %}
+{% endspaceless %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "basic.html" %}
+
+{% block content %}
+<div style="position: relative; top: -20pt; font-family: sans">
+	<a class="embeddable" id="switch" href="/archive-b"><input type=checkbox></input></a><span style="font-size: 10pt">Show back covers</span></div>
+{% spaceless %}
+    {% for year in years %}
+        <div class="yearblock">
+            <h2 class="year">{{ year }}</h2>
+            {% for issue in year reversed %}
+		<div class="shadow"><div class="s1"><div class="s2"><div class="s3"><div class="s4">
+                <a class="page embeddable" href="/archive/{{ issue.date }}">
+			<img class="gallery-page" alt="Issue {{ issue.date }}" src="{{ issue.calculate_thumbnail_url }}">
+                </a>
+                <div class="thumbtext">{{ issue.date|date:"F j" }}</div>
+		</div></div></div></div></div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endspaceless %}
+{% endblock %}

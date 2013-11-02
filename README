@@ -1,0 +1,10 @@
+Dependencies:
+
+  imagemagick
+  python-django >= 1.0
+  python-django-evolution
+  python-imaging
+  python-markdown
+  python-psycopg2
+  python-pypdf
+  python-simplejson

@@ -1,0 +1,9 @@
+{% load markup %}
+
+{% if author.bio %}
+{{ author.bio|markdown }}
+{% endif %}
+{% if author.year %}
+	Class of {{ author.year }}{% endif %}{% if authors %}{% if author.year %}, {% endif %}
+	{% include "authorlinks.html" %}
+{% endif %}

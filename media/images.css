@@ -1,0 +1,112 @@
+.image-default {
+	margin-bottom: 1em;
+	float: left;
+	width: 532px;
+	overflow: hidden;
+}
+
+.image-wrap {
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+.image-default img {
+	border: none;
+	width: 530px; /* remember to sync with imageutil */
+}
+
+.small {
+	border: none;
+	width: 257px;
+	margin-top: 1em;
+	margin-left: 1em;
+	margin-right: .2em;
+	float: right;
+}
+
+.small img {
+	width: 255px; /* remember to sync with imageutil */
+	border: none;
+}
+
+.thumb {
+	float: right;
+	border: none;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 1em;
+	margin-right: .2em;
+	width: 100px;
+}
+
+.thumb .image-wrap {
+	border: none;
+}
+
+.thumb img {
+	border: none;
+	max-width: 100px;
+	width: auto !important;
+}
+
+.author {
+	color: #555;
+	float: right;
+	clear: left;
+	font-size: 8pt;
+	font-style: italic;
+	margin-top: .2em;
+	margin-left: 1em;
+}
+
+.caption {
+	color: #555;
+	float: left;
+	width: 100%;
+	clear: right;
+	font-size: 9pt;
+	font-family: Tahoma, sans-serif;
+	margin-right: 1em;
+}
+
+.thumb .author {
+	display: none;
+}
+
+.thumb .caption {
+	display: none;
+}
+
+.nocaption .caption, .cartoon .caption, .comic .caption {
+	display: none;
+}
+
+.noattr .author, .cartoon .author, .comic .author {
+	display: none;
+}
+
+.showcaption .caption {
+	display: inherit;
+}
+
+.showattr .author {
+	display: inherit;
+}
+
+.left {
+	float: left;
+	margin-left: .2em;
+	margin-right: 1.5em;
+}
+
+.noborder .image-wrap, .comic .image-wrap, .cartoon .image-wrap {
+	border: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.noscale img {
+	width: auto !important;
+}
