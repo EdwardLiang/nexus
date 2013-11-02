@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>   <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>      <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>      <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+
+		<meta charset="utf-8">
+		<title>Summarize - Responsive Blog/Magazine</title>
+		<meta name="description" content="">
+
+		<!-- Mobile Devices Viewport Resset-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+
+		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+		<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+
+		<link href="vendor/google-code-prettify/prettify.css" rel="stylesheet">
+
+		<!--[if IE 8]>
+			<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome-ie7.min.css">
+		<![endif]-->
+
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Lato:300,400,700,400italic,700italic|Droid+Serif' rel='stylesheet' type='text/css'>
+
+		<script src="vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+		 <style>
+		 .section:first-child .page-header:first-child {
+		 	margin-top: 0px;
+		 }
+		 .section:first-child .page-header:first-child .section-title {
+		 	margin-top: 5px;
+		 }
+		 .section {
+		 	margin-bottom: 40px;
+		 }
+
+		</style>
+
+	</head>
+	<body>
+		
+		<div id="page" class="container">
+
+			<header id="header" class="page-header">
+
+				<h1>Summarize <small>Documentation</small></h1>
+
+			</header>
+
+			
+			<div id="main" class="row">
+
+				<div class="col-sm-3">
+
+					<ul class="nav nav nav-pills nav-stacked">	
+						<li><a href="#Overview">Overview</a></li>
+						<li><a href="#Files">Files Structure</a></li>
+						<li><a href="#Customizing">Customizing CSS</a></li>
+						<li><a href="#Base">Base HTML</a></li>
+						<li><a href="#Header">Header</a></li>
+						<li><a href="#Content">Content</a></li>
+						<li><a href="#Hero">Hero</a></li>
+						<li><a href="#Footer">Footer</a></li>
+						<li><a href="#Sources">Sources and Credits</a></li>
+					</ul>
+
+				</div>
+
+				<div class="col-sm-9">
+					
+					<div id="Overview"  class="section">
+						<div class="page-header">
+							<h2 class="section-title">Overview</h2>
+						</div>
+						<p class="lead">
+							Summarize is a highly customizable Responsive HTML Template for blogging / magazine. 
+						</p>
+
+<ul>
+	<li>Build on Bootstrap (3+)</li>
+	<li>Use Font Awesome for icons</li>
+	<li>Fully Responsive Layout</li>
+	<li>12 Columns Grid</li>
+	<li>Preloaded with 3 Colorshemes (Coolorize, Dark, Light)</li>
+	<li>Separated css files for easy customizing (base/components/colorscheme).</li>
+	<li>Use google fonts.</li>
+	<li>Html template files:
+		<ul>
+			<li>3 Types of home + 1 Category View</li>
+			<li>2 single post design</li>
+			<li>Components Demo</li>
+			<li>Banner Placements Sample</li>
+		</ul>
+	</li>
+	<li>Tabs - Accordion - Prettyphoto</li>
+	<li>Less files included</li>
+	<li>Full Layered PSD (homepage) - Note: I'm using photoshop for creating basic design, design improved alogn with the developent.</li>
+	<li>Document file included</li>
+</ul>
+
+						<h3>Support</h3>
+
+						<p>For support you can contact to helpdesk@coolorize.com. In working day (from Monday to Friday), I'll reply as soon as possible	within maximum 48 hours. Support request sent during weekends will be processed on next Monday morning.</p>
+
+					</div>
+					<div id="Files" class="section">
+						<div class="page-header">
+							<h2 class="section-title">Files Structure</h2>
+						</div>
+
+<pre class="prettyprint">
+	<span class="pln">venturize</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">├──</span><span class="pln"> css</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> base</span><span class="pun">.</span><span class="pln">css
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> base</span><span class="pun">.</span><span class="pln">less
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> components</span><span class="pun">.</span><span class="pln">css
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> components</span><span class="pun">.</span><span class="pln">less
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> libs.css</span><span class="pun">.</span><span class="pln">css
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> libs.css</span><span class="pun">.</span><span class="pln">less
+	</span><span class="pun">├──</span><span class="pln"> html</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">├──</span><span class="pln"> html-dark</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">├──</span><span class="pln"> html-light</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">├──</span><span class="pln"> img</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">├──</span><span class="pln"> js</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">├──</span><span class="pln"> vendor</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> bootstrap</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> font-awesone</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> prettyPhoto</span><span class="pun">/</span><span class="pln">
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> jquery.unveil.min</span><span class="pun">.</span><span class="pln">js
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> jquery-1.10.1.min</span><span class="pun">.</span><span class="pln">js
+	</span><span class="pun">│</span><span class="pln">	 </span><span class="pun">├──</span><span class="pln"> modernizr-2.6.2-respond-1.1.0.min</span><span class="pun">.</span><span class="pln">js
+	</span><span class="pun">└──</span><span class="pln"> index</span><span class="pun">.</span><span class="pln">html</span>
+</pre>
+					</div>
+					<div id="Customizing" class="section">
+						<div class="page-header">
+							<h2 class="section-title">Customizing CSS</h2>
+						</div>
+						<p>Summarize separated css files into these:</p>
+						<ol>
+							<li>css/libs.css is where i put reusable code library (mixins) for less.</li>
+							<li>css/base.css is for the base layout styling, css/components.css is where the components styled.
+								<ul>
+									<li>change <code>@row_height</code> value (standard: 175px) to set hero / grid-style base height </li>
+									<li>change <code>@logo_height</code> and <code>@logo_width</code> value, to set logo dimention </li>
+									<li>change <code>@navbar_height</code> value, to set navbar height.</li>
+								</ul>
+							</li>
+							<li>css/components.css is where I put components layout styling.</li>
+							<li>All CSS within "colorschemes" folder are where the colorschemes styling rule located.
+
+								<br>
+
+								Each colorscheme require <code>_master.less</code>
+
+								<br>
+
+								On top of colorscheme file you can find variables. Change the value to customize color styling
+
+							</li>
+						</ol>
+							<p>At the bottom of css/base.css, css/components.css, colorschemes/*.css you will find rules for different screen sizes (media query).</p>
+						<p>Since venturize is using less to complile css, it's not recomended to directly modify the css files.</p>
+						<p>To edit and compile <code>less</code> files you need Less compiler. You can read about less in <a href="http://lesscss.org/">here</a>. </p>
+						<p>I personally using sublime text (<a href="www.sublimetext.com">www.sublimetext.com</a>) for my editor and for compiling <code>less</code> files, i'm using <a href="https://github.com/timdouglas/sublime-less2css">Less 2 CSS</a> plugin for sublime text</p>
+
+					</div>
+					<div id="Base" class="section">
+						<div class="page-header">
+							<h2 class="section-title">Base HTML</h2>
+						</div>
+
+						<p>This is the base HTML structure</p>
+
+<pre class="prettyprint linenums">
+&lt;nav id="header" class="header-navbar" role="navigation"&gt;
+	&lt;div class="header-navbar-inner container"&gt;
+		{menu}
+	&lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div id="main" class="container"&gt;		
+	<i>{this is the main container. Inside #main You will find group of elements wrapped in 
+    &lt;div class="section" &gt; ... &lt;/div&gt; tag }</i>
+&lt;/div&gt;
+
+&lt;footer id="footer" class="container"&gt;
+&lt;/footer&gt;
+</pre>
+					</div>
+					<div id="Header" class="section">
+						<div class="page-header">
+							<h2 class="section-title">Header</h2>
+						</div>
+<pre class="prettyprint linenums">
+&lt;nav id="header" class="header-navbar" role="navigation"&gt;
+	&lt;div class="header-navbar-inner container"&gt;
+		
+		&lt;div id="brand" class="navbar-brand"&gt;
+			&lt;a href="index.html" rel="bookmark"&gt;
+				&lt;img src="../img/logo.png" width="244" height="56" alt=""&gt;
+			&lt;/a&gt;
+		&lt;/div&gt;
+
+		&lt;ul class="nav nav-pages hidden-xs"&gt;
+			{menu items}
+		&lt;/ul&gt;
+
+		&lt;ul class="nav nav-icons"&gt;
+			{menu items}
+		&lt;/ul&gt;
+
+		&lt;div class="search-wrapper js-stoppropagation"&gt;
+			{search_form}
+		&lt;/div&gt;
+
+		&lt;ul class="nav navbar-nav"&gt;
+			{menu items}
+		&lt;/ul&gt;
+
+	&lt;/div&gt;
+&lt;/nav&gt;
+</pre>
+					</div>
+					<div id="Content" class="section">
+						<div class="page-header">
+							<h2 class="section-title">Content</h2>
+						</div>
+
+						<p>With Sidebar</p>
+<pre class="prettyprint linenums">
+&lt;div id="content" class="content section row"&gt;
+
+	&lt;div class="col-md-8 bg-base col-lg-8 col-xl-9"&gt;
+		{primary content}
+	&lt;/div&gt;
+
+	&lt;div class="sidebar col-md-4 col-lg-4 col-xl-3"&gt;
+		{sidebar}
+	&lt;/div&gt;
+
+&lt;/div&gt;
+</pre>					<p>Without Sidebar</p>
+<pre class="prettyprint linenums">
+&lt;div id="content" class="content section"&gt;
+	{primary content}
+&lt;/div&gt;
+</pre>				
+					</div>
+					<div id="Hero" class="section">
+						<div class="page-header">
+							<h2 class="section-title">Hero</h2>
+						</div>
+
+						<p>Hero is spesific layout for highliting some entries to users. Heres the entry tag structure:</p>
+<pre class="prettyprint linenums">	
+&lt;article class="entry style-grid style-hero hero-sm-standard type-post col-md-6 col-lg-6 colheight-sm-1"&gt;
+						
+	&lt;div class="ribbon ribbon-pulled ribbon-small ribbon-highlight"&gt;
+		&lt;a href="blog.html"&gt;Event&lt;/a&gt;
+	&lt;/div&gt;
+
+	&lt;header class="entry-header"&gt;
+		&lt;h3 class="entry-title"&gt;&lt;a href="single.html"&gt;{title}&lt;/a&gt;&lt;/h3&gt;
+		&lt;div class="entry-meta"&gt;
+			&lt;span class="entry-date"&gt;&lt;a href="blog.html"&gt;{date}&lt;/span&gt;
+			&lt;span class="entry-author"&gt; by &lt;a href="blog.html"&gt;{author}&lt;/a&gt;&lt;/span&gt;
+		&lt;/div&gt;
+	&lt;/header&gt;
+							
+	&lt;figure class="entry-thumbnail"&gt;
+
+		&lt;a href="single.html" class="overlay overlay-primary"&gt;&lt;/a&gt;
+		&lt;img src="{image_src}" alt=""&gt;
+		
+	&lt;/figure&gt;
+
+&lt;/article&gt;
+</pre>
+
+						<ul>
+							<li>
+								<code>style-grid</code> and <code>style-hero</code> is the required class for creating hero entry <a href="http://getbootstrap.com/css"></a>
+							</li>
+							<li>
+								<code>col-*-*</code> is for the entry/col width. See the documentation <a href="">http://getbootstrap.com/css/#grid</a>
+							</li>
+							<li>
+								<code>colheight-*-*</code> is for the entry/col height. you can set up to max height= 3
+							</li>
+							<li>
+								<code>hero-*-standard </code> is for the font size. There are: <code>hero-*-standard </code>, <code>hero-*-larger </code> and <code>hero-*-largest </code>
+							</li>
+						</ul>
+
+						<p>
+							I've preloaded the template with 3 hero grids sample. The first one (the one in <code>index.html</code>) is like this:
+						</p>
+
+<pre class="prettyprint linenums">
+&lt;div class="section row entries bg-primary section-no-margin-bottom"&gt;
+	&lt;div class="col-lg-6 col-xl-5"&gt;
+		&lt;div class="row"&gt;
+
+			&lt;article class="entry style-grid style-hero hero-md-largest type-post col-md-8 col-lg-12 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2"&gt;
+				{entry}
+			&lt;/article&gt;
+
+			&lt;article class="entry style-grid style-hero type-post col-md-4 col-lg-6 colheight-sm-1"&gt;
+				{entry}
+			&lt;/article&gt;
+
+			&lt;article class="entry style-grid style-hero type-post col-md-4 col-lg-6 colheight-sm-1"&gt;
+				{entry}
+			&lt;/article&gt;
+
+		&lt;/div&gt;&lt;!--/.row--&gt;
+	&lt;/div&gt;
+	&lt;div class="col-lg-6 col-xl-7"&gt;
+		&lt;div class="row"&gt;
+
+			&lt;article class="entry style-grid style-hero type-post col-md-4 col-lg-6 colheight-sm-1"&gt;
+				{entry}
+			&lt;/article&gt;
+
+			&lt;article class="entry style-grid style-hero type-post col-md-4 col-lg-6 colheight-sm-1"&gt;
+				{entry}
+			&lt;/article&gt;
+
+			&lt;article class="entry style-grid style-hero hero-lg-larger type-post col-md-4 col-lg-6 colheight-sm-1 colheight-lg-2"&gt;
+				{entry}
+			&lt;/article&gt;
+
+			&lt;article class="entry style-grid style-hero type-post col-md-6 col-lg-6 colheight-sm-1"&gt;
+				{entry}
+			&lt;/article&gt;
+
+			&lt;article class="entry style-grid style-hero type-post col-md-6 col-lg-6 colheight-sm-1"&gt;
+				{entry}
+			&lt;/article&gt;
+
+			&lt;/div&gt;&lt;!--/.row--&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;&lt;!--/section.row.entries--&gt;
+</pre>
+
+						<p>
+							The second hero (<code>blog.html</code>) is look like this:
+						</p>
+<pre class="prettyprint linenums">
+&lt;div class="section row entries bg-primary section-no-margin-bottom"&gt;
+
+	&lt;article class="entry style-grid style-hero hero-sm-largest type-post col-sm-12 col-md-6 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2"&gt;
+		{entry}
+	&lt;/article&gt;
+
+	&lt;article class="entry style-grid style-hero type-post col-md-6 col-lg-3 colheight-sm-1"&gt;
+		{entry}
+	&lt;/article&gt;
+
+	&lt;article class="entry style-grid style-hero type-post col-md-6 col-lg-3 colheight-sm-1"&gt;
+		{entry}
+	&lt;/article&gt;
+
+	&lt;article class="entry style-grid style-hero type-post col-md-6 col-lg-3 colheight-sm-1"&gt;
+		{entry}
+	&lt;/article&gt;
+
+	&lt;article class="entry style-grid style-hero type-post col-md-6 col-lg-3 colheight-sm-1"&gt;
+		{entry}
+	&lt;/article&gt;
+
+&lt;/div&gt;
+</pre>
+						<p>
+							The third hero (<code>blog-grids.html</code>) is look like this:
+						</p>
+<pre class="prettyprint linenums">
+&lt;div class="section row entries bg-primary section-no-margin-bottom"&gt;
+
+	&lt;article class="entry style-grid style-hero hero-sm-largest type-post col-sm-12 col-md-8 col-lg-8 col-xl-6 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2"&gt;
+		{entry}
+	&lt;/article&gt;
+
+	&lt;article class="entry style-grid style-hero type-post col-sm-6 col-md-4 col-lg-4 col-xl-6 colheight-sm-1 colheight-md-1 colheight-lg-1 colheight-xl-2"&gt;
+		{entry}
+	&lt;/article&gt;
+
+	&lt;article class="entry style-grid style-hero hero-sm-larger hero-xl-normal type-post col-sm-6 col-md-4 col-lg-4 col-xl-4 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-1 sm-pull-right"&gt;
+		{entry}
+	&lt;/article&gt;
+
+	&lt;article class="entry style-grid style-hero type-post col-sm-6 col-md-4 colheight-md-1 colheight-sm-1 colheight-md-1 colheight-lg-1 colheight-lg-1 colheight-xl-1"&gt;
+		{entry}
+	&lt;/article&gt;
+
+	&lt;article class="entry style-grid style-hero type-post col-sm-6 col-md-4 colheight-md-1 colheight-sm-1 colheight-md-1 colheight-lg-1 colheight-md-1 colheight-xl-1"&gt;
+		{entry}
+	&lt;/article&gt;
+
+&lt;/div&gt;&lt;!--/section.row.entries.ui-hero-entries--&gt;
+</pre>
+					</div>
+					<div id="Footer" class="section">
+						<div class="page-header">
+							<h2 class="section-title">Footer</h2>
+						</div>
+<pre class="prettyprint linenums">
+&lt;footer id="footer" class="footer-area"&gt;
+	&lt;div class="footer-top container"&gt;
+		
+	&lt;/div&gt;
+
+	&lt;div class="footer-bottom"&gt;
+		
+	&lt;/div&gt;
+
+&lt;/footer&gt;
+</pre>
+					</div>
+					<div id="Sources"class="section">
+						<div class="page-header">
+							<h2 class="section-title">Sources and Credits</h2>
+						</div>
+
+<ul>
+	<li>
+		<a href="http://getbootstrap.com">Bootstrap 3</a>
+	</li>
+	<li>
+		<a href="fortawesome.github.io/Font-Awesome/">Font Awesome</a>
+	</li>
+	<li>
+		Fonts used on the demo are from <a href="http://google.com/webfonts">Google webfonts</a>
+	</li>
+	<li>
+		Some wonderfull images are from <a href="http://unsplash.com/">http://unsplash.com/</a>
+	</li>
+	<li>
+		<a href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/">jQuery Prettyphoto</a>
+	</li>
+</ul>
+
+					</div>
+						
+
+				</div>
+				
+			</div>
+
+
+		</div>
+
+
+		<script src="vendor/jquery-1.10.1.min.js"></script>
+		<!--
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="vendor/jquery-1.10.1.min.js"><\/script>')</script>
+	-->
+
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+		<script src="vendor/google-code-prettify/prettify.js"></script>
+
+		<script>
+
+!function ($) {
+  $(function(){
+    // make code pretty
+    window.prettyPrint && prettyPrint()
+  })
+}(window.jQuery)
+
+		</script>
+
+	</body>
+</html>	
