@@ -1,16 +1,39 @@
-<li style="overflow: hidden;" id="art_{{ article.slug }}">
-  <h3>{% include "articlelink.html" %}</h3>
-  <div class="date">{{ article.date|date:"F d, Y" }}&nbsp;&nbsp;|&nbsp;{% with article.authors.all as authors %}{% include "authorlinks.html" %}{% endwith %}</div>
-      {% if article.images.all %}
-		{% with article.images.all.0 as img %}
-        {% if article.image_centric %}
-            <a class="embeddable" href="/{{ article.date|date:"Y/m" }}/{{ article.slug }}">
-                <img class="imgsnippet" alt="{{ img.slug }}" src="{{ img.article_size }}">
-            </a>
-        {% else %}
-            <a class="embeddable" href="/{{ article.date|date:"Y/m" }}/{{ article.slug }}"><img alt="{{ img.slug }}" style="float:right;padding-left:1em;margin-top:-1em" src="{{ img.thumbnail_size }}"></a>
-        {% endif %}
-		{% endwith %}
-      {% endif %}
-      {{ article.auto_snippet }}
-</li>
+	<article class="entry style-media media type-post">
+
+							<figure class="media-object pull-left entry-thumbnail hidden-xs">
+                {% if article.images.all %}
+                        {% with article.images.all.0 as img %}
+                        {% if article.image_centric %}
+                            <a class="embeddable" href="/{{ article.date|date:"Y/m" }}/{{ article.slug }}">
+                                <img class="imgsnippet" alt="{{ img.slug }}" src="{{ img.article_size }}" width="230" height="230">
+                            </a>
+                        {% else %}
+                            <a class="embeddable" href="/{{ article.date|date:"Y/m" }}/{{ article.slug }}"><img alt="{{ img.slug }}" style="float:right;padding-left:1em;margin-top:-1em" src="{{ img.thumbnail_size }}"></a>
+                        {% endif %}
+                    {% endwith %}
+                      {% endif %}
+							</figure>
+
+							<div class="media-body">
+
+								<header class="entry-header">
+									<h3 class="entry-title">
+										<a href="single.html" rel="bookmark">{% include "articlelink.html" %}</a>
+									</h3>
+
+									<div class="entry-meta">
+										<span class="author">by <a href="blog.html"></a>{% with article.authors.all as authors %}{% include "authorlinks.html" %}{% endwith %}</span>
+										<span class="entry-date">on <time datetime="2013-07-04T23:26:34+00:00">{{ article.date|date:"F d, Y" }}</time></span>
+										<span class="category">In {% with article.tags.all as tags %}{% include "taglinks.html" %}{% endwith %}</span>
+									</div>
+								</header>
+
+								<p>
+                      {{ article.auto_snippet }}
+                    <a href="/{{ article.date|date:"Y/m" }}/{{ article.slug }}" class="more-link">Continue Reading<i class="icon icon-long-arrow-right"></i></a>
+								</p>
+
+							</div>
+
+						</article>
+
