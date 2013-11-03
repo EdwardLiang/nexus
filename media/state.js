@@ -53,8 +53,12 @@ function setVisible(str, results_header) {
 	}
 	if (results_header) {
 		$("#results_header").show();
+		$("#banner").show();
+		$("#bar").show();
 	} else {
 		$("#results_header").hide();
+		$("#banner").hide();
+		$("#bar").hide();
 	}
 	if (google_ok && str != 'search') {
 		customSearchControl.clearAllResults();

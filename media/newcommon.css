@@ -1,0 +1,11 @@
+li.active {
+  cursor: wait !important;
+}
+
+a.active {
+  cursor: wait;
+}
+
+.infoboxaction.active {
+  cursor: wait;
+}
