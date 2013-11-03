@@ -225,8 +225,14 @@ class Article(models.Model):
     def auto_snippet(self):
         if self.snippet:
             return self.snippet
-        match = PARAGRAPH.search('\n' + self.fulltext + '\n')
-        return match.group()[1:-1] if match else ''
+        paragraphs = PARAGRAPH.findall('\n' + self.fulltext + '\n')
+        res = ""
+        while paragraphs and len(res) < 400:
+            res += paragraphs[0] + "  "
+            paragraphs = paragraphs[1:]
+        if len(res) > 1000:
+            res = res[:1000] + "..."
+        return res
 
     def auto_title(self):
         # filter() doesn't seem to work with __isnull=False !?
