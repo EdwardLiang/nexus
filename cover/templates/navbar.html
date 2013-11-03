@@ -17,12 +17,13 @@
 				</div>
 
 				<ul class="nav nav-pages hidden-xs">
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
-					<li><a href="#">Advertise </a></li>
-					<li><a href="#">Terms &amp; Conditions</a></li>
-					<li><a href="#">Privacy</a></li>
-				</ul>
+      {% for i in FOOTER %}
+      {% if i.show_in_footer %}
+        <a class="embeddable" href="/info/{{ i.slug }}">{{ i.link_name }}   </a>
+      {% endif %}
+      {% endfor %}
+
+      </ul>
 
 				<ul class="nav nav-icons">
 					<li>
