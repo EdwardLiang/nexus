@@ -83,6 +83,11 @@ class Issue(models.Model):
         return pdf_to_thumbnail(the_actual_pdf.pdf.path, 160)
 
     @ignore_errors
+    def calculate_sidebar_url(self):
+        the_actual_pdf = self.pdf_set.all()[0]
+        return pdf_to_thumbnail(the_actual_pdf.pdf.path, 600)
+
+    @ignore_errors
     def calculate_back_url(self):
         the_actual_pdf = self.pdf_set.all().reverse()[0]
         return pdf_to_thumbnail(the_actual_pdf.pdf.path, 120)

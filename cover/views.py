@@ -76,10 +76,13 @@ def frontpage(request, title='The Nexus', content=None, page=1, static=False, au
     FOOTER = InfoPage.objects.all()
     sidelinks = SideBarLink.objects.all()
     all_articles = visible(Article.objects)
+    should_hide_banner = page != 1
     if tagged:
         all_articles = all_articles.filter(tags=tagged)
+        should_hide_banner = True
     elif author:
         all_articles = all_articles.filter(authors=author)
+        should_hide_banner = True
     types = (('tag-3', 
             [ tag for tag in Tag.objects.filter(type=3) if visible(tag.article_set).count() > 0 ]
         ), ('tag-2',
