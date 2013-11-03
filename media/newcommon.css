@@ -80,3 +80,8 @@ a.active {
   text-align: center;
   clear: both;
 }
+
+.subauthor {
+  text-align: center;
+  font-size: 10pt;
+}

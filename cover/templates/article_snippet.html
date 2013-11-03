@@ -26,7 +26,7 @@
 									<div class="entry-meta">
 										<span class="author">by <a href="blog.html"></a>{% with article.authors.all as authors %}{% include "authorlinks.html" %}{% endwith %}</span>
 										<span class="entry-date">on <time datetime="2013-07-04T23:26:34+00:00">{{ article.date|date:"F d, Y" }}</time></span>
-										<span class="category">In {% with article.tags.all as tags %}{% include "taglinks.html" %}{% endwith %}</span>
+										<span class="category">in {% with article.tags.all as tags %}{% include "taglinks.html" %}{% endwith %}</span>
 									</div>
 								</header>
 
