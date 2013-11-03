@@ -8,7 +8,7 @@ from django.conf import settings
 from django.template import Context
 from django.template.loader import get_template
 
-THUMB_MAX_SIZE = (100,100)
+THUMB_MAX_SIZE = (230,230)
 ARTICLE_MAX_SIZE = (530,2048) # remember to sync with images.css
 SMALL_MAX_SIZE = (255,2048) # remember to sync with images.css
 THUMBS_PATH = 'cache/image_thumbs/'

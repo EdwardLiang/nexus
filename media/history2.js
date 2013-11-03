@@ -50,24 +50,10 @@ History.callCallback = function(hash) {
 
 History.init = function(callback) {
 	History.historyCallback = callback;
-	History.useIframe = $.browser.msie && $.browser.version < 8;
 
 	var current_hash = location.hash;
 	History.historyCurrentHash = current_hash;
 
-	if (History.useIframe) {
-		// IE quirk?
-		if (History.historyCurrentHash === '')
-			History.historyCurrentHash = '#';
-
-		// add hidden iframe for IE
-		$("body").prepend('<iframe id="jQuery_history" style="display: none;"></iframe>');
-		var ihistory = $("#jQuery_history")[0];
-		var iframe = ihistory.contentWindow.document;
-		iframe.open();
-		iframe.close();
-		iframe.location.hash = current_hash;
-	}
 	History.poller = setInterval(History.historyCheck, 100);
 };
 

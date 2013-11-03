@@ -40,13 +40,13 @@ $(document).ready(function() {
 		}
 	}
 
-	$("a.list-hider").live("click", function(event) {
+	$(document).on("click", 'a.list-hider', function(event) {
 		event.preventDefault();
 		$(".alist").show("slow");
 		$(".list-hider").hide();
 	});
 
-	$("a.poll").live("click", function(event) {
+	$(document).on("click", 'a.list-hider', function(event) {
 		if (is_nonlocal(event))
 			return;
 		event.preventDefault();
@@ -66,7 +66,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$("a.poll_results_only").live("click", function(event) {
+	$(document).on("click", 'a.poll_results_only', function(event) {
 		if (is_nonlocal(event))
 			return;
 		event.preventDefault();
@@ -86,7 +86,7 @@ $(document).ready(function() {
 		});
 	});
 
-	$("a.authorlink").live("click", function(event) {
+	$(document).on("click",'a.authorlink', function(event) {
 		if (is_nonlocal(event))
 			return;
 		var page_author = $("#authorslug").html();
@@ -117,7 +117,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$("a.embeddable").live("click", function(event) {
+	$(document).on("click",'a.embeddable', function(event) {
 		if (is_nonlocal(event))
 			return;
 		event.preventDefault();
@@ -125,16 +125,16 @@ $(document).ready(function() {
 		State.scrollup();
 	});
 
-	$(".backinfobox").live("click", function(event) {
+	$(document).on("click",'.backinfobox', function(event) {
 		State.sync({'author': $(this).attr('data-slug')}, {'link': $(this)});
 		State.scrollup();
 	});
 
-	$(".clearinfobox").live("click", function(event) {
+	$(document).on("click",'.clearinfobox', function(event) {
 		State.sync({'author': '', 'page': 1}, {'link': $(this)});
 	});
 
-	$("a.pagelink").live("click", function(event) {
+	$(document).on("click",'a.pagelink', function(event) {
 		if (is_nonlocal(event))
 			return;
 		event.preventDefault();
@@ -142,7 +142,7 @@ $(document).ready(function() {
 		State.scrollup();
 	});
 
-	$("a.gs-title").live("click", function(event) {
+	$(document).on("click",'a.gs-title', function(event) {
 		if (is_nonlocal(event))
 			return;
 		var href = $(this).attr("href");
@@ -169,8 +169,8 @@ $(document).ready(function() {
 	var selecting_dates = false;
 	var down = false;
 	$("#tags #alltags").width(window.TAG_EXPANDED);
-	$("#tags").disableTextSelect();
-	$("#dates").disableTextSelect();
+	//$("#tags").disableTextSelect();
+	//$("#dates").disableTextSelect();
 
 	if (window.location.hash.length > 1) { // permalink and not lone '#'
 		setVisible("none");
@@ -262,18 +262,7 @@ $(document).ready(function() {
 		}
 	});
 
-	if ($.browser.msie) {
-		$('#tags li').animate({'width':'+=0'}); // hover only works after this...
-		$('#tags li').hover(function() {
-			if (!$(this).hasClass("useless"))
-				$(this).css('filter','alpha(opacity=80)');
-			else
-				$(this).css('cursor','default');
-		}, function() {
-			$(this).css('filter','alpha(opacity=100)');
-			$(this).css('cursor','pointer');
-		});
-	}
+	
 });
 
 // vim: noet ts=4

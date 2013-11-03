@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>   <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>      <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>      <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
 {% include "head.html" %}
 	<body>
 
@@ -11,7 +11,7 @@
     .results_header {
         display: none;
     }
-    .banner {
+    #banner {
         display: none;
     }
     </style>
@@ -29,11 +29,12 @@
     {% include "navbar.html" %}
 
     <div id="main" class="container">
+    <div id="grid">
 
     {% include "banner.html" %} 
 			<div id="content" class="content section row">
 
-				<div class="col-md-8 bg-base col-lg-8 col-xl-9">
+				<div class="col-md-8 bg-base col-lg-8 col-xl-9" id="centercolumn">
 
 					<div class="ribbon ribbon-highlight">
 						<ol class="breadcrumb ribbon-inner">
@@ -44,20 +45,19 @@
 					</div>
 					
 					<div class="entries results" id="results">
-
               {% for article in articles %}
                 {% include "article_snippet.html" %}
               {% endfor %}
-
 					</div><!--/.entris-->
           <div class="paginator results" id="bottom_paginator">
           {% include "paginator2.html" %}
           </div>
+          </div>
 
+        {% include "sidebar.html" %}	
 
 				</div><!--/.col-md-8.col-lg-8.col-xl-9-->
 
-        {% include "sidebar.html" %}	
 			
 		</div>
     
