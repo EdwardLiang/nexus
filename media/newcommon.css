@@ -45,3 +45,38 @@ a.active {
   background-color: #171717;
   padding: 2px;
 }
+
+.shadow {
+  float: left;
+  margin: 10px 6px 6px 6px;
+}
+
+.shadow .s2,
+.shadow .s3,
+.shadow .s4 {
+  position: relative;
+  left: -1px;
+  top: -1px;
+}
+
+.shadow .s1 {
+  background: #F1F0F1;
+}
+
+.shadow .s2 {
+  background: #DBDADB;
+}
+
+.shadow .s3 {
+  background: #B8B6B8;
+}
+
+.shadow .s4 {
+  background: #ffffff;
+  border: 1px solid #848284;
+}
+
+.year {
+  text-align: center;
+  clear: both;
+}
