@@ -15,9 +15,9 @@ python-simplejson
 echo "Setting up database configuration for local development:"
 
 if test -d pg_files; then
-	sudo rsync -rlHK pg_files/main/ /etc/postgresql/8.4/main/
-	sudo chown postgres:postgres /etc/postgresql/8.4/main/*
-	sudo /etc/init.d/postgresql-8.4 restart
+	sudo rsync -rlHK pg_files/main/ /etc/postgresql/9.1/main/
+	sudo chown postgres:postgres /etc/postgresql/9.1/main/*
+	sudo /etc/init.d/postgresql restart
 else
 	echo "Postgresql conf missing!"
 	exit 1
@@ -41,8 +41,8 @@ else
 	echo "  zcat pg_files/dump.sql.gz | psql nexus nexus"
 fi
 
-echo "Attempting to update codebase using public git url:"
-git pull git://github.com/ericl/nexus.git master
+#echo "Attempting to update codebase using public git url:"
+#git pull git://github.com/ericl/nexus.git master
 
 python << EOF
 import django
@@ -51,3 +51,5 @@ print("Django version required: 1.0.x")
 print("Using django version: " + v)
 print("Note: Versions 1.1+ *will* fail in unexpected ways. I don't recall exactly where, but probably in file upload validation.")
 EOF
+echo "Done."
+echo "Btw, you should set DATABASE_ENGINE = 'postgresql_psycopg2' in settings.py to use this setup."

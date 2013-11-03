@@ -21,7 +21,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'
+#DATABASE_ENGINE = 'sqlite3'
+DATABASE_ENGINE = 'postgresql_psycopg2'
 DATABASE_NAME = 'nexus'
 DATABASE_USER = 'nexus'
 DATABASE_PASSWORD = 'asdf'
