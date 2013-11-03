@@ -39,8 +39,7 @@ try {
 } catch (e) { } // google_ok will then be false
 
 function is_nonlocal(event) {
-	return event.ctrlKey || event.shiftKey
-	|| (!$.browser.msie && event.button !== 0); // don't need check for IE?
+	return event.ctrlKey || event.shiftKey || event.button !== 0; // don't need check for IE?
 }
 
 function setVisible(str, results_header) {
