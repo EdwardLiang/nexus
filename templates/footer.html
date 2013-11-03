@@ -1,8 +1,19 @@
-<div id="footer">
-  <div><p>&copy; {% now "Y" %} the nexus, westview</p></div>
-  {% for i in FOOTER %}
-	{% if i.show_in_footer %}
-    <a class="embeddable" href="/info/{{ i.slug }}">{{ i.link_name }}</a>
-	{% endif %}
-  {% endfor %}
-</div>
+	<footer id="footer" class="footer-area">
+      <center>
+     {% for i in FOOTER %}
+      {% if i.show_in_footer %}
+        <a class="embeddable" href="/info/{{ i.slug }}">{{ i.link_name }}</a>
+      {% endif %}
+      {% endfor %}
+      </center>
+
+			<div class="footer-bottom">
+
+				<div class="container aligncenter">
+         <div><p>&copy; {% now "Y" %} The Nexus, Westview</p></div>
+				</div>
+
+			</div>
+
+		</footer>
+		

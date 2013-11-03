@@ -1,20 +1,22 @@
 	<article class="entry style-media media type-post">
+							<div class="media-body">
 
-							<figure class="media-object pull-left entry-thumbnail hidden-xs">
                 {% if article.images.all %}
                         {% with article.images.all.0 as img %}
                         {% if article.image_centric %}
+                        <figure class="media-object pull-right entry-thumbnail hidden-xs">
                             <a class="embeddable" href="/{{ article.date|date:"Y/m" }}/{{ article.slug }}">
                                 <img class="imgsnippet" alt="{{ img.slug }}" src="{{ img.article_size }}" width="230" height="230">
                             </a>
+                        </figure>
                         {% else %}
+                       	<figure class="media-object pull-right entry-thumbnail hidden-xs">
                             <a class="embeddable" href="/{{ article.date|date:"Y/m" }}/{{ article.slug }}"><img alt="{{ img.slug }}" style="float:right;padding-left:1em;margin-top:-1em" src="{{ img.thumbnail_size }}"></a>
+                        </figure>
                         {% endif %}
                     {% endwith %}
                       {% endif %}
-							</figure>
 
-							<div class="media-body">
 
 								<header class="entry-header">
 									<h3 class="entry-title">
@@ -32,8 +34,6 @@
                       {{ article.auto_snippet }}
                     <a href="/{{ article.date|date:"Y/m" }}/{{ article.slug }}" class="more-link">Continue Reading<i class="icon icon-long-arrow-right"></i></a>
 								</p>
-
-							</div>
-
+            </div>
 						</article>
 
