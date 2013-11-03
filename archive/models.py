@@ -41,7 +41,7 @@ class PDF(models.Model):
 
     @ignore_errors
     def calculate_mini_url(self):
-        return pdf_to_thumbnail(self.pdf.path, 75)
+        return pdf_to_thumbnail(self.pdf.path, 680)
 
     @ignore_errors
     def calculate_thumbnail_url(self):
