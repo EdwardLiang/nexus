@@ -6,6 +6,25 @@
 {% include "head.html" %}
 	<body>
 
+    {% if not articles %}
+    <style type="text/css">
+    .results_header {
+        display: none;
+    }
+    .banner {
+        display: none;
+    }
+    </style>
+    {% endif %}
+    {% if content %}
+    <style type="text/css">
+    .results {
+        display: none;
+    }
+    </style>
+    {% endif %}
+
+
 		<h1 class="sr-only">Nexus</h1>
     {% include "navbar.html" %}
 
@@ -24,7 +43,7 @@
 						</ol>
 					</div>
 					
-					<div class="entries">
+					<div class="entries results" id="results">
 
               {% for article in articles %}
                 {% include "article_snippet.html" %}
