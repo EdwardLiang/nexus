@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
-from django.http import HttpResponse
 from cover.views import *
 from archive.views import *
 
@@ -19,21 +18,6 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 
     (r'^$', some_frontpage),
-    (r'^ajax/embed/cover/$', frontpage_static_contents),
-    (r'^ajax/embed/(\d{4})/(\d{2})/([-_a-zA-Z0-9]+)/$', articlepage),
-    (r'^ajax/embed/images/([-_a-zA-Z0-9]+)$', authorimages),
-    (r'^ajax/embed/image/([-_a-zA-Z0-9]+)/$', imageview),
-    (r'^ajax/embed/tag/([-_a-zA-Z0-9]+)$', tagpage),
-    (r'^ajax/embed/info/all-staff$', all_authors),
-    (r'^ajax/embed/info/staff$', staff_auto_infopage),
-    (r'^ajax/embed/info/([-_a-zA-Z0-9]+)$', infopage),
-    (r'^ajax/embed/static/([-_a-zA-Z0-9]+)$', staticpage),
-    (r'^ajax/embed/poll_history$', pollhist),
-    (r'^ajax/embed/archive/$', issue_gallery),
-    (r'^ajax/embed/archive-b/$', issue_gallery_b),
-    (r'^ajax/embed/archive/current/$', current_page_gallery),
-    (r'^ajax/embed/archive/(\d{4}-\d{2}-\d{2})/$', page_gallery),
-    (r'^ajax/paginator$', paginate),
     (r'^ajax/poll/$', poll_results),
     (r'^ajax/poll/current$', poll_view),
 
@@ -50,7 +34,9 @@ urlpatterns = patterns('',
     (r'^archive-b/$', wrap(issue_gallery_b)),
     (r'^archive/current/$', wrap(current_page_gallery)),
     (r'^archive/(\d{4}-\d{2}-\d{2})/$', wrap(page_gallery)),
-    (r'^(\d+)$', frontpage_paginated),
+    (r'^tag/([-_a-zA-Z0-9]+)/(\d+)$', articles_by_tag),
+    (r'^author/([-_a-zA-Z0-9]+)/(\d+)$', articles_by_author),
+    (r'^(\d+)$', articles),
 )
 
 if settings.STATIC_SERVE:

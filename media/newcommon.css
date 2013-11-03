@@ -9,4 +9,39 @@ a.active {
 
 .infoboxaction.active {
   cursor: wait;
+  background-color: #afafaf;
+}
+
+.infoboxaction {
+  background-color: #171717;
+  color: white;
+  cursor: pointer;
+  line-height: 10pt;
+  text-align: center;
+  padding: 5px;
+}
+
+#infobox {
+  background-color: #efefef;
+  padding: 5px;
+  text-align: center;
+  width: 90%;
+}
+
+#infoboxall {
+  margin-top: 5px;
+}
+
+#photobox {
+  font-size: 7pt;
+  background-color: #afafaf;
+  padding-left: 3pt;
+  padding-right: 2pt;
+}
+
+.paginate-current {
+  font-weight: bold;
+  color: white;
+  background-color: #171717;
+  padding: 2px;
 }

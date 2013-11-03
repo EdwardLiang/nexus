@@ -361,7 +361,7 @@ class StaticPage(models.Model):
     slug = models.CharField(max_length=20)
     html = models.TextField()
     date = models.DateField(unique=True)
-    cover_page = models.BooleanField("Set as cover page", default=False)
+    cover_page = models.BooleanField("Set as cover page", default=False, editable=False)
 
     def __str__(self):
         return "/static/%s" % self.slug

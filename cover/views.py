@@ -1,4 +1,3 @@
-import re
 import previews
 import simplejson as json
 
@@ -12,7 +11,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import Context, Template
 from django.template.loader import get_template
 from django.views.decorators.cache import never_cache
-from django.views.generic.list_detail import object_detail
 from imageutil import ImageFormatter
 from models import *
 from util import *
@@ -72,23 +70,16 @@ def staticpage(request, slug):
         mimetype='application/json'
     )
 
-def frontpage_static_contents(request):
-    query = StaticPage.objects.filter(cover_page=True)
-    if query.count() < 1:
-        message = "No static pages were marked as cover pages."
-        return render_json('not found', '404.html', locals())
-    obj = query[0]
-    return HttpResponse(
-        json.dumps({'html': obj.html, 'title': 'Nexus | %s' % obj.title}),
-        mimetype='application/json'
-    )
-
-def frontpage(request, title='The Nexus', content=None, page=1, static=False):
-    frontpage = True # for paginator.html
+def frontpage(request, title='The Nexus', content=None, page=1, static=False, author=None, tagged=None):
     DISABLE_GOOGLE = settings.DISABLE_GOOGLE
     MEDIA_URL = settings.MEDIA_URL
     FOOTER = InfoPage.objects.all()
     sidelinks = SideBarLink.objects.all()
+    articles = visible(Article.objects)
+    if tagged:
+        articles = articles.filter(tags=tagged)
+    elif author:
+        articles = articles.filter(authors=author)
     types = (('tag-3', 
             [ tag for tag in Tag.objects.filter(type=3) if visible(tag.article_set).count() > 0 ]
         ), ('tag-2',
@@ -97,7 +88,7 @@ def frontpage(request, title='The Nexus', content=None, page=1, static=False):
             [ tag for tag in Tag.objects.filter(type=1) if visible(tag.article_set).count() > 0 ]
         ))
     if not content:
-        paginator = Paginator(visible(Article.objects), PAGE_SIZE)
+        paginator = Paginator(articles, PAGE_SIZE)
         pages = paginator.num_pages
         if page > pages or page < 1:
             raise Http404
@@ -117,13 +108,13 @@ def frontpage(request, title='The Nexus', content=None, page=1, static=False):
         current_issue = False
     key = 'frontpage_dates_key'
     try:
-        key += '%s' % visible(Article.objects)[0].id
+        key += '%s' % articles[0].id
     except IndexError:
         pass
     dates = cache.get(key)
     if not dates:
         dates = []
-        for date in visible(Article.objects).dates('date', 'month', order='DESC'):
+        for date in articles.dates('date', 'month', order='DESC'):
             year = what_school_year(date)
             if not dates or dates[-1].year != year:
                 dates.append(SchoolYear(year))
@@ -132,16 +123,21 @@ def frontpage(request, title='The Nexus', content=None, page=1, static=False):
     return HttpResponse(get_template('frontpage.html').render(Context(locals())))
 
 def some_frontpage(request):
-    query = StaticPage.objects.filter(cover_page=True)
-    if query.count() < 1:
-        return frontpage(request)
-    else:
-        obj = query[0]
-        return frontpage(request, static=True, content=obj.html)
+    return frontpage(request)
 
-def frontpage_paginated(request, page):
+def articles(request, page):
     title = 'The Nexus' if page == 1 else 'The Nexus | %s' % page
     return frontpage(request, page=int(page), title=title)
+
+def articles_by_tag(request, tag, page):
+    title = 'The Nexus' if page == 1 else 'The Nexus | %s' % page
+    tag = get_object_or_404(Tag, slug=tag)
+    return frontpage(request, page=int(page), title=title, tagged=tag)
+
+def articles_by_author(request, author, page):
+    title = 'The Nexus' if page == 1 else 'The Nexus | %s' % page
+    author = get_object_or_404(Author, slug=author)
+    return frontpage(request, page=int(page), title=title, author=author)
 
 def imageview(request, slug):
     MEDIA_URL = settings.MEDIA_URL
@@ -275,55 +271,6 @@ def snippet(article):
     ret = get_template('article_snippet.html').render(Context({'article': article}))
     cache.set(key, ret)
     return ret
-
-def paginate(request):
-    tags = Tag.objects.filter(slug__in=request.POST.getlist('tags'))
-    hash = request.POST.get('hash', '#')
-    if hash != '#':
-        hash += ','
-    have_articles = request.POST.getlist('have_articles')
-    authorslug = request.POST.get('author')
-    author = None
-    if authorslug:
-        try:
-            author = Author.objects.get(slug=authorslug)
-        except Author.DoesNotExist:
-            pass
-    min_date = parse_date(request.POST.get('date_min'))
-    max_date = month_end(parse_date(request.POST.get('date_max')))
-    articles = visible(Article.objects)
-    info = ''
-    if author:
-        articles = articles.filter(authors=author)
-        info = get_template('infobox.html').render(Context({'author': author}))
-    for tag in tags:
-        articles = articles.filter(tags=tag)
-    dates = dates_of(articles, tags, authorslug if author else None) # BEFORE date filtering
-    articles = articles.filter(date__range=[min_date, max_date])
-    paginator = Paginator(articles, PAGE_SIZE)
-    pages = paginator.num_pages
-    page = int(request.POST.get('page',1))
-    try:
-        object_list = paginator.page(page).object_list
-    except (EmptyPage, InvalidPage):
-        page = paginator.num_pages
-        object_list = paginator.page(page).object_list
-    if pages > 1:
-        is_paginated = True
-        page_numbers, jump_forward, jump_back = pagesof(page, pages)
-        next = page + 1
-        previous = page - 1
-        has_next = (page < pages)
-        has_previous = (page > 1)
-        # the bottom one
-        page_numbers2, jump_forward2, jump_back2 = pagesof(page, pages, 6)
-    results = [(article.slug, snippet(article)) for article in object_list if article.slug not in have_articles]
-    r = {'results': {'new': results, 'info': info, 'all': [ article.slug for article in object_list ]},
-         'tags': tag_data(articles, tags, min_date, max_date, authorslug if author else None), 'dates': dates,
-         'pages': get_template('paginator.html').render(Context(locals())),
-         'pages2': get_template('paginator2.html').render(Context(locals())),
-         'title': 'The Nexus | %i' % page if page > 1 else 'The Nexus'}
-    return HttpResponse(json.dumps(r), mimetype='application/json')
 
 @staff_member_required
 def preview(request, type, object_id):

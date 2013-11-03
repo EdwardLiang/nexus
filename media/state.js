@@ -39,6 +39,7 @@ try {
 } catch (e) { } // google_ok will then be false
 
 function is_nonlocal(event) {
+    return true; // XXX(ekl) disables all ajax links
 	return event.ctrlKey || event.shiftKey || event.button !== 0; // don't need check for IE?
 }
 
@@ -168,6 +169,7 @@ function State(repr, config) {
 		var hit = State.cached[repr];
 		var that = this;
 		function load(data) {
+		    console.log("load");
 			that.read_json_tags(data['tags']);
 			that.read_json_dates(data['dates']);
 			if (!just_url_update)
@@ -205,6 +207,7 @@ function State(repr, config) {
 				url: "/ajax/paginator",
 				success: load,
 				error: function(xhr) {
+				    console.log("ajax error");
 					$("#embedded_content").html(xhr.responseText);
 					setVisible("embed");
 					State.release_request();
@@ -213,6 +216,7 @@ function State(repr, config) {
 		}
 	};
 
+	console.log("attempt acquire");
 	State.acquire_request();
 	if (config['link'])
 		State.activelink = config['link'].addClass("active");
@@ -256,6 +260,7 @@ State.article_data = new Object();
 
 State.init_history_monitor = function() {
 	History.init(function(hist) {
+	    console.log("Hash changed to: " + hist);
 		new State(Repr.deserialize(hist), {'keep_hash': true});
 	});
 };
@@ -285,14 +290,17 @@ State.sync = function(overrides, config) {
 };
 
 State.acquire_request = function() {
+	console.log("acquire");
 	if (google_ok)
 		customSearchControl.cancelSearch();
 	if (State.request) {
+		console.log("abort request");
 		State.scroll_flag = false;
 		State.request.abort();
 		State.request = null;
 	}
 	if (State.request2) {
+		console.log("abort request2");
 		State.request2.abort();
 		State.request2 = null;
 	}
