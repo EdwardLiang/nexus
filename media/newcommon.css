@@ -3,6 +3,7 @@ li.active {
 }
 
 a.active {
+  text-decoration: underline;
   cursor: wait;
 }
 
