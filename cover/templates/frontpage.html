@@ -6,7 +6,7 @@
 {% include "head.html" %}
 	<body>
 
-    {% if should_hide_banner %}
+    {% if should_hide_banner or not articles %}
     <style type="text/css">
     .results_header {
         display: none;
