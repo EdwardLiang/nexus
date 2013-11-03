@@ -75,11 +75,11 @@ def frontpage(request, title='The Nexus', content=None, page=1, static=False, au
     MEDIA_URL = settings.MEDIA_URL
     FOOTER = InfoPage.objects.all()
     sidelinks = SideBarLink.objects.all()
-    articles = visible(Article.objects)
+    all_articles = visible(Article.objects)
     if tagged:
-        articles = articles.filter(tags=tagged)
+        all_articles = all_articles.filter(tags=tagged)
     elif author:
-        articles = articles.filter(authors=author)
+        all_articles = all_articles.filter(authors=author)
     types = (('tag-3', 
             [ tag for tag in Tag.objects.filter(type=3) if visible(tag.article_set).count() > 0 ]
         ), ('tag-2',
@@ -88,7 +88,7 @@ def frontpage(request, title='The Nexus', content=None, page=1, static=False, au
             [ tag for tag in Tag.objects.filter(type=1) if visible(tag.article_set).count() > 0 ]
         ))
     if not content:
-        paginator = Paginator(articles, PAGE_SIZE)
+        paginator = Paginator(all_articles, PAGE_SIZE)
         pages = paginator.num_pages
         if page > pages or page < 1:
             raise Http404
@@ -106,20 +106,6 @@ def frontpage(request, title='The Nexus', content=None, page=1, static=False, au
         current_issue = visible(Issue.objects)[0]
     except IndexError:
         current_issue = False
-    key = 'frontpage_dates_key'
-    try:
-        key += '%s' % articles[0].id
-    except IndexError:
-        pass
-    dates = cache.get(key)
-    if not dates:
-        dates = []
-        for date in articles.dates('date', 'month', order='DESC'):
-            year = what_school_year(date)
-            if not dates or dates[-1].year != year:
-                dates.append(SchoolYear(year))
-            dates[-1].append(date)
-        cache.set(key, dates, METADATA_CACHE_SECONDS)
     return HttpResponse(get_template('frontpage.html').render(Context(locals())))
 
 def some_frontpage(request):
