@@ -1,7 +1,16 @@
+			 
 {% extends "basic.html" %}
+	
 {% load markup %}
 
 {% block subtitle %}
+					<div class="ribbon ribbon-highlight">
+						<ol class="breadcrumb ribbon-inner">
+							<li><a href="/">Home</a></li>
+              <li>{% with article.tags.all as tags %}{% include "taglinks.html" %}{% endwith %}</li>
+						</ol>
+					</div>
+
 	{% block article_title %}{{ article.auto_title|safe }}{% endblock %}
 	<br>
 	<span class="subauthor">

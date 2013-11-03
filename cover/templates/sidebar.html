@@ -2,24 +2,13 @@
               <aside class="widget">
                 <h3 class="widget-title ribbon"><span>Tags</span></h3>
                 <div class="tagcloud">
-                  <a href="#">Some</a>
-                  <a href="#">Tag</a>
-                  <a href="#">Goes</a>
-                  <a href="#">Here</a>
-                  <a href="#">Utempor</a>
-                  <a href="#">Incididunt</a>
-                  <a href="#">Labore</a>
-                  <a href="#">Dolore</a>
-                  <a href="#">Magna</a>
-                  <a href="#">Aliqua</a>
-                  <a href="#">Seddo</a> 
-                  <a href="#">Siusmod</a>
-                  <a href="#">Tempor</a>
-                  <a href="#">Incididunt</a>
-                  <a href="#">Ut labore</a>
-                  <a href="#">Et dolore </a>
-                  <a href="#">Magna </a>
-                  <a href="#">Aliqua</a>
+                  {% for type, tags in types %}
+                        {% for tag in tags %}
+                          <a class="not_embeddable" href="/tag/{{ tag.slug }}">
+                            {{ tag.name }}
+                          </a></li>
+                        {% endfor %}
+                  {% endfor %}
                 </div>
               </aside><!--/.widget-->
 					

@@ -14,6 +14,9 @@
     #banner {
         display: none;
     }
+    #bar {
+        display: none;
+    }
     </style>
     {% endif %}
     {% if content %}
@@ -36,11 +39,9 @@
 
 				<div class="col-md-8 bg-base col-lg-8 col-xl-9" id="centercolumn">
 
-					<div class="ribbon ribbon-highlight">
+					<div class="ribbon ribbon-highlight" id="bar">
 						<ol class="breadcrumb ribbon-inner">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Features</a></li>
-							<li class="active">Blog 2 Columns</li>
+							<li><a href="/">Home</a></li>
 						</ol>
 					</div>
 				 
@@ -53,7 +54,7 @@
           <div id="embedded_content" class="embed">{% if content %}{{ content|safe }}{% endif %}</div>
 					</div><!--/.entris-->
           <div class="paginator results" id="bottom_paginator">
-          {% include "paginator2.html" %}
+          {% include "paginator.html" %}
           </div>
           </div>
 
