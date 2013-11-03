@@ -43,11 +43,14 @@
 							<li class="active">Blog 2 Columns</li>
 						</ol>
 					</div>
-					
-					<div class="entries results" id="results">
+				 
+					<div class="entries">
+          <ul class="results" id="results">
               {% for article in articles %}
                 {% include "article_snippet.html" %}
               {% endfor %}
+          </ul>
+          <div id="embedded_content" class="embed">{% if content %}{{ content|safe }}{% endif %}</div>
 					</div><!--/.entris-->
           <div class="paginator results" id="bottom_paginator">
           {% include "paginator2.html" %}
