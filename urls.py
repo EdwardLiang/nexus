@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     (r'^tag/([-_a-zA-Z0-9]+)/(\d+)$', articles_by_tag),
     (r'^author/([-_a-zA-Z0-9]+)/(\d+)$', articles_by_author),
     (r'^(\d+)$', articles),
+    (r'^yay', 'django.views.generic.simple.direct_to_template', {'template': 'yay.html'}),
 )
 
 if settings.STATIC_SERVE:
