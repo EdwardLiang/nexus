@@ -51,7 +51,16 @@
  * 6. Responsive
  */
 body {
-  background-color: #ebebeb;
+  //background-color: #ebebeb;
+  background-image: url(boston-fireworks-2.jpg);
+  background-attachment: fixed;
+  background-position: 49% 50%;
+  background-repeat:no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
   color: #444444;
 }
 a {
