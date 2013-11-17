@@ -1024,13 +1024,3 @@ body.scrolled .header-navbar  .nav-pages {
     display: block;
   }
 }
-body.scrolled #award{
-    width:2%;
-    left:160px;
-}
-#award{
-    width:3%;
-    position:absolute;
-    top:0px;
-    left:200px;
-}
