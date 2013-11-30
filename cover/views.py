@@ -15,6 +15,7 @@ from imageutil import ImageFormatter
 from models import *
 from util import *
 
+BANNER_SIZE= 5
 PAGE_SIZE = 10
 METADATA_CACHE_SECONDS = 3600 * 12
 
@@ -69,7 +70,7 @@ def staticpage(request, slug):
         json.dumps({'html': obj.html, 'title': 'Nexus | %s' % obj.title}),
         mimetype='application/json'
     )
-
+    
 def frontpage(request, title='The Nexus', content=None, page=1, static=False, author=None, tagged=None):
     DISABLE_GOOGLE = settings.DISABLE_GOOGLE
     MEDIA_URL = settings.MEDIA_URL
@@ -90,6 +91,9 @@ def frontpage(request, title='The Nexus', content=None, page=1, static=False, au
         ), ('tag-1',
             [ tag for tag in Tag.objects.filter(type=1) if visible(tag.article_set).count() > 0 ]
         ))
+    if not tagged and not author:
+        banner_articles = all_articles.all()[:5]
+        all_articles = all_articles.all()[5:]
     if not content:
         paginator = Paginator(all_articles, PAGE_SIZE)
         pages = paginator.num_pages
