@@ -35,9 +35,11 @@
 
 				<div class="search-wrapper js-stoppropagation">
 					<div class="search-wrapper-inner">
-						<form>
-							<input type="text" value="" placeholder="search ... ">
-							<button class="btn-icon" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+						<form id="cse-search-box" action="http://google.com/cse">
+              <input type="hidden" name="cx" value="000477555736971519961:lso6fcublcc">
+              <input type="hidden" name="ie" value="UTF-8">
+							<input type="text" name="q" value="" placeholder="Google Search...">
+							<button class="btn-icon" type="submit" name="sa" value="Search"><span class="glyphicon glyphicon-search"></span></button>
 						</form>
 					</div>
 				</div>
